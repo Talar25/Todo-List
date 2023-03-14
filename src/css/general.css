@@ -30,11 +30,17 @@
     --third-color: #98DFD6;
     --third-color-light: #ade5de;
 
-    --white-like-color: #e6e9ef;
+    --white-like-color: #ccd3de;
     --black-like-color: #000e24;
 
     --black-color: #000;
     --white-color: #fff;
+    --red-color-light: #e84646;
+    --red-color: #E21818;
+    --red-color-dark: #9e1111;
+    --green-color-dark: #427451;
+    --green-color: #539165;
+    --green-color-light: #75a784;
 
 
     /* fonts */
@@ -64,6 +70,42 @@ body {
     box-sizing: border-box;
     font-family: 'MyFont';
 
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
 
 }
+
+.heading-primary {
+    font-weight: 900;
+    font-size: var(--very-large-font);
+    margin-left: 2rem;
+
+    display: inline-block;
+    border-bottom: 2px solid var(--primary-color-lighter);
+}
+
+.heading-secondary {
+    font-weight: 900;
+    font-size: var(--large-font);
+    padding: 1rem 0;
+    color: var(--primary-color-dark);
+    font-weight: 900;
+
+    border-bottom: 1px solid black;
+    margin-bottom: 2rem;
+}
+
+.heading-tertiary {
+    font-weight: 900;
+    font-size: var(--large-font);
+    margin-bottom: 1rem;
+
+    display: inline-block;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--primary-color-lighter);
+}
+

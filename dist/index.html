@@ -8,8 +8,48 @@
     <script defer src="main.js"></script>
 </head>
 <body>
-    <header class="header"></header>
-    <main class="main"></main>
-    <footer class="footer"></footer>
+    <header class="header">
+        <h1 class="heading-primary">Let's do it!</h1>
+    </header>
+    <aside class="aside">
+        <nav class="nav">
+            <ul>
+                <h3 class="heading-tertiary">Home</h3>
+                <li><a href="#">Inbox</a></li>
+                <li><a href="#">Today</a></li>
+                <li><a href="#">This week</a></li>
+                <h3 class="heading-tertiary">Projects</h3>
+
+                <div class="form-add-project">
+                <input id="new-project" type="text" placeholder="Name">
+                <div class="form-buttons">
+                <button class="btn-project-agree">Add</button>
+                <button class="btn-project-decline">Cancel</button>
+            </div>
+            
+            </div>
+                <button id="btn-project" class="btn-add-project show">Add project</button>
+            </ul>
+        </nav>
+    </aside>
+    <main class="main">
+
+        <section class="project-section">
+            <div class="container">
+                <h2 class="heading-secondary">Inbox</h2>
+                <div id="task" class="task">
+                    <p id="task-name" class="task-name">Moj super task</p>
+                    <p id="task-date" class="task-date">No date</p>
+                </div>
+                <button id="btn-task" class="btn-add-task"></button>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"><p>
+        Copyright © <script>
+            document.write(new Date().getFullYear())
+          </script> <a href="https://github.com/Talar25">Talar25</a>
+        </p></footer>
+    <script src="script.js"></script>
 </body>
 </html>
