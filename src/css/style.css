@@ -103,7 +103,8 @@ ul li:hover {
 }
 
 .btn-add-project,
-.btn-add-project.show {
+.btn-add-project.show,
+.btn-add-task {
 
     
     padding: 1rem;
@@ -131,7 +132,8 @@ ul li:hover {
     visibility: hidden;
 }
 
-.btn-add-project:hover {
+.btn-add-project:hover,
+.btn-add-task:hover {
     transform: scale(1.05);
     background-color: var(--primary-color-dark);
     color: var(--secondary-color);
@@ -139,7 +141,8 @@ ul li:hover {
     box-shadow: 0 1px 30px 5px rgba(0, 0, 0, 0.137);
 }
 
-.btn-add-project:active{
+.btn-add-project:active,
+.btn-add-task:active{
     transform: scale(0.98);
     box-shadow: 0 1px 20px 5px rgba(0, 0, 0, 0.237);
 }
@@ -168,6 +171,7 @@ ul li:hover {
     border-radius: 10px;
 
     font-size: var(--big-font);
+    margin-bottom: 2rem;
     
     /* transition: 0.5s all; */
 }
@@ -175,8 +179,8 @@ ul li:hover {
 .container .task:hover {
     background-color: var(--primary-color-lighter);
     color: var(--secondary-color-dark);
-
 }
+
 
 /* .task-name::before {
     content: '';
@@ -191,6 +195,16 @@ ul li:hover {
 .task-name::before:hover {
     background-color: black;
 } */
+
+.btn-add-task {
+    padding: 1rem 3rem;
+    font-size: var(--medium-font);
+    color: var(--secondary-color)
+}
+
+.btn-add-task:hover {
+    background-color: var(--primary-color-darker);
+}
 
 
 
