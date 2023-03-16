@@ -1,9 +1,10 @@
 
 
-const createElement = function (task){
+const createElement = function (task, index){
 
     const taskEl = document.createElement('div');
     taskEl.classList.add('task')
+    
 
     const taskText = document.createElement('div');;
     taskText.classList.add('task-text');
@@ -20,8 +21,27 @@ const createElement = function (task){
     taskDate.classList.add('task-date')
     taskDate.textContent = task.date;
 
+    const label = document.createElement('label');
+    label.classList.add('check-container')
+
+    const input = document.createElement('input')
+    input.type = 'checkbox';
+    input.id = 'checkbox';
+
+    const span = document.createElement('span');
+    span.classList.add('checkmark')
+    span.setAttribute("onclick", tasksArray.removeFromArray(`${index}`), false);   
+
+
+//     <label class="check-container">
+//     <input id="checkbox" type="checkbox">
+//     <span class="checkmark"></span>
+// </label>
+    label.appendChild(input)
+    label.appendChild(span)
     taskText.appendChild(taskTitle);
     taskText.appendChild(taskContent);
+    taskEl.appendChild(label)
     taskEl.appendChild(taskText);
     taskEl.appendChild(taskDate);
 
@@ -29,20 +49,49 @@ const createElement = function (task){
 
 }
 
-const addToArray = function (obj) {
+export const tasksArray = (function () {
     const arr = [];
-    arr.push(obj)
+    const addToArray = (obj) =>{
+        arr.push(obj)
+        return arr;
+    };
 
-    return arr;
-}
+    const removeFromArray = (index) => {
+        arr.splice(index, 1);
+        return arr;
+    };
 
-const renderTasks = function (tasks) {
-    tasks.forEach(element => {
-        const container = document.getElementById('container')
-        const createdEl = createElement(element);
-        container.appendChild(createdEl);
-    });
-}
+    const renderTasks = function (tasks) {
+        tasks.forEach((element, i) => {
+            const container = document.getElementById('container')
+            const createdEl = createElement(element, i);
+            container.appendChild(createdEl);
+        });
+    }
+
+    return {
+        arr,
+        addToArray,
+        removeFromArray,
+        renderTasks
+    }
+
+}());
+
+// const addToArray = function (obj) {
+//     const arr = [];
+//     arr.push(obj)
+
+//     return arr;
+// }
+
+// const renderTasks = function (tasks) {
+//     tasks.forEach((element, i) => {
+//         const container = document.getElementById('container')
+//         const createdEl = createElement(element, i);
+//         container.appendChild(createdEl);
+//     });
+// }
 
 const resetTaskManager = function () {
     const title = document.getElementById('add-task-title').value = "";
@@ -58,7 +107,7 @@ export const createTask = function () {
     const content = document.getElementById('add-task-content').value;
     const date = document.getElementById('add-date').value;
 
-    const arr = addToArray({title, content, date});
+    const arr = tasksArray.addToArray({title, content, date});
     console.log(arr)
     
 //     <div id="task" class="task">
@@ -74,7 +123,7 @@ export const createTask = function () {
     const taskManager = document.getElementById('add-task')
     taskManager.classList.remove('show')
 
-    return renderTasks(arr)
+    return tasksArray.renderTasks(arr)
 
 }
 
@@ -90,4 +139,9 @@ export const closeTaskManager = function () {
     resetTaskManager();
     const taskManager = document.getElementById('add-task')
     taskManager.classList.remove('show')
+}
+
+
+export const removeTask = function () {
+    console.log(index)
 }

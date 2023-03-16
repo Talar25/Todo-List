@@ -70,7 +70,7 @@ body {
     box-sizing: border-box;
     font-family: 'MyFont';
 
-    /* overflow-x: hidden; */
+    /* overflow-y: hidden; */
     height: 100vh;
 
     display: grid;
