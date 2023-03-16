@@ -211,10 +211,14 @@ ul li:hover {
 } */
 
 .add-task{
-    display: flex;
+
     align-items: center;
-    padding: 0.5rem;
+    padding: 2rem;
+    width: 100rem;
+    margin: 5rem auto;
+    border: 2px solid var(--primary-color-darker);
     border-radius: 10px;
+    box-shadow: 0 2px 30px 5px var(--primary-color-darker);
 
     font-size: var(--medium-font);
     margin-bottom: 2rem;
@@ -222,10 +226,53 @@ ul li:hover {
     gap: 2rem;
 }
 
+.add-task.show {
+    /* display: block; */
+    display: flex;
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.add-task {
+    display: none;
+    pointer-events: none;
+    visibility: hidden;
+}
+
 .add-task input {
     padding: 0.5rem;
     border: none;
     border-radius: 5px;
+}
+
+.add-task button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    color: var(--secondary-color-light);
+    cursor: pointer;
+}
+
+.add-task button:first-of-type {
+    margin-left: auto;
+}
+
+.btn-confirm-task {
+    background-color: var(--green-color);
+    border: 1px solid var(--green-color-dark)
+}
+
+.btn-confirm-task:hover {
+    background-color: var(--green-color-dark);
+}
+
+.btn-cancel-task {
+    background-color: var(--red-color);
+    border: 1px solid var(--red-color-dark)
+}
+
+.btn-cancel-task:hover {
+    background-color: var(--red-color-dark);
 }
 
 /* .text-inputs {
