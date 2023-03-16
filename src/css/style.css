@@ -154,19 +154,21 @@ ul li:hover {
     grid-column: 2/-1;
     background-color: var(--white-like-color);
 
+
 }
 
 .main .container {
-    max-width: 200rem;
+    max-width: 160rem;
     margin: 0 auto;
     padding: 2rem;
-    color: var(--black-like-color)
+    color: var(--black-like-color);
+    overflow: auto;
 }
 
 .container .task {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 0.5rem;
     border-radius: 10px;
 
@@ -280,13 +282,16 @@ ul li:hover {
     flex-direction: column;
 } */
 
-
+.btn-wrapper {
+    width: 20rem;
+    margin: 5rem auto;
+}
 
 
 .btn-add-task {
     padding: 1rem 3rem;
     font-size: var(--medium-font);
-    color: var(--secondary-color)
+    color: var(--secondary-color);
 }
 
 .btn-add-task:hover {
