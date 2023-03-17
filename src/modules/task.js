@@ -83,7 +83,11 @@ export const task = (function () {
         const title = document.getElementById('add-task-title').value;
         const content = document.getElementById('add-task-content').value;
         const date = document.getElementById('add-date').value;
-    
+        if(title == '' || content == '' || date == '') {
+            resetTaskManager()
+            const taskManager = document.getElementById('add-task')
+            return taskManager.classList.remove('show')
+        };
         addToArray({ title, content, date});
         index++;
         console.log(taskArr)
