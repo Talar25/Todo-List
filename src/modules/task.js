@@ -1,9 +1,16 @@
 export const task = (function () {
-    const taskArr = [];
+    let taskArr = [];
     let index = 0;
 
     const addToArray = (obj) => {
         taskArr.push(obj)
+    }
+
+
+    //need to improve that method
+    const sortArray = () => {
+        taskArr = taskArr.sort((a,b) => {a.date - b.date })
+        return renderTasks();
     }
 
     const removeFromArray = (index) => {
@@ -36,32 +43,11 @@ export const task = (function () {
         button.classList.add('remove-btn');
         button.setAttribute('remove-data', "");
         button.addEventListener('click', function (index) {
-            removeFromArray(index)
+            setTimeout(()=>{removeFromArray(index)},1000)
         })
     
-        // const label = document.createElement('label');
-        // label.classList.add('check-container')
-    
-        // const input = document.createElement('input')
-        // input.type = 'checkbox';
-        // input.classList.add('checkbox');
-        // input.value = index;
-        // input.setAttribute("onclick", "task.removeFromArray(index);");
-        // const span = document.createElement('span');
-        // span.classList.add('checkmark');
-        // span.id = index;
-        // span.setAttribute("onclick", `tasksArray.removeFromArray(${index})`, false);   
-    
-    
-    //     <label class="check-container">
-    //     <input id="checkbox" type="checkbox">
-    //     <span class="checkmark"></span>
-    // </label>
-        // label.appendChild(input)
-        // label.appendChild(span)
         taskText.appendChild(taskTitle);
         taskText.appendChild(taskContent);
-        // taskEl.appendChild(label)
         taskEl.appendChild(taskText);
         taskEl.appendChild(taskDate);
         taskEl.appendChild(button)
@@ -123,10 +109,12 @@ export const task = (function () {
     }
 
     return {
+        taskArr,
         createTask,
         openTaskManager,
         closeTaskManager,
-        removeFromArray
+        removeFromArray,
+        sortArray
     }
 
 

@@ -10,6 +10,7 @@ import './icons/week.png'
 // import { closeTaskManager } from './modules/task.js';
 // import { removeTask } from './modules/task.js';
 import { task } from './modules/task.js';
+import { today } from './modules/today';
 
 const confirm = document.getElementById('btn-confirm-task');
 confirm.addEventListener('click', task.createTask)
@@ -27,3 +28,6 @@ closeTask.addEventListener('click', task.closeTaskManager);
 //         console.log("hej")
 //     }
 // })
+
+const todayEl = document.getElementById('today');
+todayEl.addEventListener('click', task.sortArray);
