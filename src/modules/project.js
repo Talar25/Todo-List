@@ -33,6 +33,10 @@ class Inbox {
         this._tasks.splice(index, 1)
 
     }
+
+    getTasks(){
+        return this._tasks;
+    }
 }
 
 
@@ -65,11 +69,13 @@ export class App {
     date = document.getElementById('add-date');
     taskManager = document.getElementById('add-task'); 
 
+    all = document.getElementById('all')
+
     //konstruktor
     constructor() {
         //starting first project
         this._initialize();
-
+        this.all.addEventListener('click', this._renderAllTasks.bind(this))
 
 
         
@@ -86,6 +92,8 @@ export class App {
         this.addTask.addEventListener('click', this._openTaskManager.bind(this));
 
         this.closeTask.addEventListener('click', this._closeTaskManager.bind(this));
+
+
 
         this._attachProjectClickListeners();
     }
@@ -309,6 +317,31 @@ export class App {
         this.#projects.splice(index, 1)
         return this._renderProjectBtns();
         }
+    }
+
+    _getAllTasksArray(){
+        const arr = this.#projects.flatMap(a => a._tasks);
+        return arr;
+    }
+
+
+    _renderAllTasks(){
+        const container = document.getElementById('container')
+        container.textContent = "";
+        const header = document.createElement('h2')
+        header.classList.add('heading-secondary');
+        header.textContent = "All tasks";
+        container.appendChild(header);
+
+        const arr = this._getAllTasksArray();
+
+        if(arr.length === 0) return;
+        arr.forEach((element, index) => {
+
+            const createdEl = this._createETaskElement(element, index);
+            container.appendChild(createdEl);
+        });
+        console.log(arr)
     }
 
 
