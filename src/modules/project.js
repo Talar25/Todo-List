@@ -64,18 +64,22 @@ export class App {
     title = document.getElementById('add-task-title');
     description = document.getElementById('add-task-content');
     date = document.getElementById('add-date');
-    title = document.getElementById('add-task-title');
-    description = document.getElementById('add-task-content');
-    date = document.getElementById('add-date');
-    taskManager = document.getElementById('add-task'); 
 
+
+
+
+    //home buttons
     all = document.getElementById('all')
+    id = document.getElementById('today')
+    thisWeek = document.getElementById('this-week')
+    
+
 
     //konstruktor
     constructor() {
         //starting first project
         this._initialize();
-        this.all.addEventListener('click', this._renderAllTasks.bind(this))
+
 
 
         
@@ -92,6 +96,9 @@ export class App {
         this.addTask.addEventListener('click', this._openTaskManager.bind(this));
 
         this.closeTask.addEventListener('click', this._closeTaskManager.bind(this));
+        this.all.addEventListener('click', this._getAllTasksArray.bind(this))
+        this.id.addEventListener('click', this._getAllTodayTasksArray.bind(this))
+        this.thisWeek.addEventListener('click', this._getAllWeekTasksArray.bind(this))
 
 
 
@@ -307,6 +314,11 @@ export class App {
         this._renderTasks(choosenProject);
         console.log('co sie dzieje')
 
+        const taskButton = document.querySelector('.btn-add-task')
+        taskButton.classList.remove('hidden')
+        const cancelBtns = document.querySelectorAll('.remove-btn')
+        cancelBtns.forEach(x => x.classList.remove('hidden'))
+
         this._initialize();
     }
 
@@ -321,19 +333,58 @@ export class App {
 
     _getAllTasksArray(){
         const arr = this.#projects.flatMap(a => a._tasks);
-        return arr;
+        return this._renderAllTasks(arr);
     }
 
+    _getAllTodayTasksArray(){
+        const arr = this.#projects.flatMap(a => a._tasks);
 
-    _renderAllTasks(){
+        //getting today date to the same format eg '2023-05-03'
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        let currentDate = `${year}-0${month}-${day}`
+        const todayArr = arr.filter(x => x.date === currentDate)
+
+        return this._renderAllTasks(todayArr);
+    }
+
+    _getAllWeekTasksArray() {
+        const arr = this.#projects.flatMap(a => a._tasks);
+      
+        const currentDate = new Date();
+        const currentDay = currentDate.getDate();
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+      
+        // Calculate the start date of the current week
+        const startDate = new Date(currentYear, currentMonth, currentDay - currentDate.getDay());
+      
+        // Calculate the end date of the current week
+        const endDate = new Date(currentYear, currentMonth, currentDay + (6 - currentDate.getDay()));
+      
+        const weekArr = arr.filter(x => {
+          const taskDate = new Date(x.date);
+          return taskDate >= startDate && taskDate <= endDate;
+        });
+      
+        return this._renderAllTasks(weekArr);
+      }
+
+
+    _renderAllTasks(arr){
         const container = document.getElementById('container')
         container.textContent = "";
         const header = document.createElement('h2')
         header.classList.add('heading-secondary');
         header.textContent = "All tasks";
         container.appendChild(header);
+        const taskButton = document.querySelector('.btn-add-task')
+        taskButton.classList.add('hidden')
 
-        const arr = this._getAllTasksArray();
+
 
         if(arr.length === 0) return;
         arr.forEach((element, index) => {
@@ -341,6 +392,8 @@ export class App {
             const createdEl = this._createETaskElement(element, index);
             container.appendChild(createdEl);
         });
+        const cancelBtns = document.querySelectorAll('.remove-btn')
+        cancelBtns.forEach(x => x.classList.add('hidden'))
         console.log(arr)
     }
 
