@@ -6,7 +6,6 @@ import './icons/inbox.png'
 import './icons/today.png'
 import './icons/week.png'
 
-import { Project } from './modules/Task';
 import { App } from './modules/project';
 
 // const project = new Project();
