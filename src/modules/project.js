@@ -333,7 +333,7 @@ export class App {
 
     _getAllTasksArray(){
         const arr = this.#projects.flatMap(a => a._tasks);
-        return this._renderAllTasks(arr);
+        return this._renderAllTasks(arr, "All Tasks");
     }
 
     _getAllTodayTasksArray(){
@@ -348,7 +348,7 @@ export class App {
         let currentDate = `${year}-0${month}-${day}`
         const todayArr = arr.filter(x => x.date === currentDate)
 
-        return this._renderAllTasks(todayArr);
+        return this._renderAllTasks(todayArr, "Today");
     }
 
     _getAllWeekTasksArray() {
@@ -370,16 +370,16 @@ export class App {
           return taskDate >= startDate && taskDate <= endDate;
         });
       
-        return this._renderAllTasks(weekArr);
+        return this._renderAllTasks(weekArr, "This week");
       }
 
 
-    _renderAllTasks(arr){
+    _renderAllTasks(arr, name){
         const container = document.getElementById('container')
         container.textContent = "";
         const header = document.createElement('h2')
         header.classList.add('heading-secondary');
-        header.textContent = "All tasks";
+        header.textContent = name;
         container.appendChild(header);
         const taskButton = document.querySelector('.btn-add-task')
         taskButton.classList.add('hidden')
