@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's do it</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1 class="heading-primary">Let's do it!</h1>
+    </header>
+    <aside class="aside">
+        <nav class="nav">
+            <ul>
+                <h3 class="heading-tertiary">Home</h3>
+                <li id="all"><img class="nav-icon" src="../src/icons/inbox.png" alt="icon"><a  href="#">All</a></li>
+                <li id="today"><img class="nav-icon" src="../src/icons/today.png" alt="icon"><a  href="#">Today</a></li>
+                <li id="this-week"><img class="nav-icon" src="../src/icons/week.png" alt="icon"><a  href="#">This week</a></li>
+                 <h3 class="heading-tertiary">Projects</h3>
+                <div class="project-container">
+                    <!-- <li id="title" class="new-project"><a  href="#">title</a><div class="project-cancel"></div></li> -->
+                </div>
+
+
+                <div class="form-add-project" id="form-add-project">
+                <input id="new-project" type="text" placeholder="Name">
+                <div class="form-buttons">
+                <button id="btn-project-agree" class="btn-project-agree">Add</button>
+                <button id="btn-project-decline" class="btn-project-decline">Cancel</button>
+                
+            </div> 
+             
+            </div>
+                <button id="btn-project" class="btn-add-project show">Add project</button>
+            </ul> 
+        </nav>
+    </aside>
+    <main class="main">
+
+        <section class="project-section">
+            <div id="container" class="container">
+                <h2 class="heading-secondary">Inbox</h2>
+                <!-- <div id="task" class="task">
+                    <div class="task-text">
+                        <span id="task-title" class="task-title">Lorem</span>
+                        <p id="task-content" class="task-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi praesentium ex tempora est exercitationem. </p>
+                    </div>
+                        <p id="task-date" class="task-date">No date</p>
+                        <button remove-data class="remove-btn"></button>
+                </div> -->
+            
+
+            </div>
+            <div id="add-task" class="add-task">
+
+                <input placeholder="Title" class="add-task-title" id="add-task-title" type="text">
+                <input placeholder="What would you like to do?" class="add-task-content" id="add-task-content" type="text">
+                <input id="add-date" type="date">
+                <button id="btn-confirm-task" class="btn-confirm-task">Confirm</button>
+                <button id="btn-cancel-task" class="btn-cancel-task">Cancel</button>
+        </div>
+        <div class="btn-wrapper">
+            <button id="btn-task" class="btn-add-task">Add task</button>
+        </div>
+        </section>
+    </main>
+    <footer class="footer"><a href="https://github.com/Talar25"><p>
+        Copyright © <script>
+            document.write(new Date().getFullYear())
+          </script> Talar25
+        </p></a></footer>
+</body>
+</html>
